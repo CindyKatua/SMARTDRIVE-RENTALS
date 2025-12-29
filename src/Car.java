@@ -47,4 +47,23 @@ public class Car {
     public boolean isAvailable() {
         return isAvailable;
     }
+
+    public void rent() {
+        if (isAvailable) {
+            isAvailable = false;
+        } else {
+            throw new IllegalStateException("Car is not available for rent");
+        }
+    }
+
+    public double calculateRentalCost(int days) {
+        if (days <= 0) {
+            throw new IllegalArgumentException("Rental period must be at least 1 day");
+        }
+        return pricePerDay * days;
+    }
+
+    public void returnCar() {
+        isAvailable = true;
+    }
 }
